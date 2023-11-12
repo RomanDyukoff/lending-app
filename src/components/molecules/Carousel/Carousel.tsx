@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { register } from 'swiper/element/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Modal from 'react-modal';
 
 import kek from '../../../public/img/hasbik.jpg'
 
@@ -14,11 +15,45 @@ import 'swiper/scss';
 import 'swiper/scss/effect-coverflow';
 import 'swiper/scss/navigation';
 
-import { EffectCoverflow, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Navigation, Virtual } from 'swiper/modules';
+import { useState } from 'react';
+import { slides } from '@/constants/constants';
+
+
+const customStyles = {
+	overlay: {
+		backgroundColor: 'rgba(0, 0, 0, 0.75)',
+		zIndex: '10',
+	},
+	content: {
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
+		display: 'flex',
+		flexDirection: 'column' as "column",
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: "2rem",
+	}
+};
 
 export const Carousel = () => {
+	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+
+	const openModal = () => {
+		setModalIsOpen(true);
+	}
+
+	const closeModal = () => {
+		setModalIsOpen(false);
+	}
+
+
 	return (
-		<div className="content">
+		<>
 			<Swiper
 				effect={'coverflow'}
 				grabCursor={true}
@@ -35,27 +70,18 @@ export const Carousel = () => {
 					nextEl: '.swiper-button-next',
 					prevEl: '.swiper-button-prev',
 				}}
-				modules={[EffectCoverflow, Navigation]}
+				modules={[EffectCoverflow, Navigation, Virtual]}
 				className="swiper_container"
 			>
-				<SwiperSlide>
-					<Image src={kek} alt="slide_image" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image src={kek} alt="slide_image" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image src={kek} alt="slide_image" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image src={kek} alt="slide_image" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image src={kek} alt="slide_image" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image src={kek} alt="slide_image" />
-				</SwiperSlide>
+
+
+				{
+					slides.map((slide, i) => (
+						<SwiperSlide key={i++} onClick={openModal}>
+							<Image src={slide.src} alt={slide.alt} priority />
+						</SwiperSlide>
+					))
+				}
 
 
 				<div className="slider-controler">
@@ -67,6 +93,17 @@ export const Carousel = () => {
 					</div>
 				</div>
 			</Swiper>
-		</div>
+
+			<Modal
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				style={customStyles}
+				contentLabel="Example Modal"
+				ariaHideApp={false}
+			>
+				<Image src={kek} alt="slide_image" />
+				<button onClick={closeModal} style={{ position: 'absolute', top: "0", right: "0", cursor: "pointer" }}> Close</button>
+			</Modal >
+		</>
 	);
 }
