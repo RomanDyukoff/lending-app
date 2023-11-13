@@ -1,0 +1,30 @@
+.contacts {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__map {
+    width: 696px;
+    height: 414px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 510px;
+  font-size: 20px;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  &__address {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 20px;
+    font-weight: 400;
+    font-style: normal;
+  }
+}

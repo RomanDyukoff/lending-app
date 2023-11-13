@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { register } from 'swiper/element/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Modal from 'react-modal';
 
 import kek from '../../../public/img/hasbik.jpg'
 
@@ -18,27 +17,8 @@ import 'swiper/scss/navigation';
 import { EffectCoverflow, Navigation, Virtual } from 'swiper/modules';
 import { useState } from 'react';
 import { slides } from '@/constants/constants';
+import { ModalWindow } from '../ModalWindow/ModalWindow';
 
-
-const customStyles = {
-	overlay: {
-		backgroundColor: 'rgba(0, 0, 0, 0.75)',
-		zIndex: '10',
-	},
-	content: {
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		marginRight: '-50%',
-		transform: 'translate(-50%, -50%)',
-		display: 'flex',
-		flexDirection: 'column' as "column",
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: "2rem",
-	}
-};
 
 export const Carousel = () => {
 	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -46,11 +26,6 @@ export const Carousel = () => {
 	const openModal = () => {
 		setModalIsOpen(true);
 	}
-
-	const closeModal = () => {
-		setModalIsOpen(false);
-	}
-
 
 	return (
 		<>
@@ -94,16 +69,9 @@ export const Carousel = () => {
 				</div>
 			</Swiper>
 
-			<Modal
-				isOpen={modalIsOpen}
-				onRequestClose={closeModal}
-				style={customStyles}
-				contentLabel="Example Modal"
-				ariaHideApp={false}
-			>
+			<ModalWindow isOpen={modalIsOpen} handelClose={setModalIsOpen}>
 				<Image src={kek} alt="slide_image" />
-				<button onClick={closeModal} style={{ position: 'absolute', top: "0", right: "0", cursor: "pointer" }}> Close</button>
-			</Modal >
+			</ModalWindow>
 		</>
 	);
 }
