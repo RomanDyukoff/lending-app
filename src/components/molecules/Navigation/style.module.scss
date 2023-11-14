@@ -3,98 +3,98 @@ $burger-color-open: #bb945f;
 $media-breakpoint: 768px;
 
 .navigation {
-  display: flex;
-  align-items: center;
-  &__burger {
-    position: relative;
-    display: none;
-    width: 2rem;
-    height: 2rem;
-    transform: rotate(0deg);
-    transition: 0.5s ease-in-out;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
+	display: flex;
+	align-items: center;
+	&__burger {
+		position: relative;
+		display: none;
+		width: 2rem;
+		height: 2rem;
+		transform: rotate(0deg);
+		transition: 0.5s ease-in-out;
+		cursor: pointer;
+		border: none;
+		background-color: transparent;
 
-    div {
-      display: block;
-      position: absolute;
-      height: 0.2rem;
-      width: 100%;
-      background: $burger-color;
-      border-radius: 0.1rem;
-      opacity: 1;
-      left: 0;
-      transform: rotate(0deg);
-      transition: 0.25s ease-in-out;
+		div {
+			display: block;
+			position: absolute;
+			height: 0.2rem;
+			width: 100%;
+			background: $burger-color;
+			border-radius: 0.1rem;
+			opacity: 1;
+			left: 0;
+			transform: rotate(0deg);
+			transition: 0.25s ease-in-out;
 
-      &:nth-child(1) {
-        top: 0.3rem;
-      }
+			&:nth-child(1) {
+				top: 0.3rem;
+			}
 
-      &:nth-child(2) {
-        top: 0.9rem;
-      }
+			&:nth-child(2) {
+				top: 0.9rem;
+			}
 
-      &:nth-child(3) {
-        top: 1.5rem;
-      }
-    }
+			&:nth-child(3) {
+				top: 1.5rem;
+			}
+		}
 
-    &.open {
-      div {
-        &:nth-child(1) {
-          top: 0.9rem;
-          transform: rotate(135deg);
-          background-color: $burger-color-open;
-        }
+		&.open {
+			div {
+				&:nth-child(1) {
+					top: 0.9rem;
+					transform: rotate(135deg);
+					background-color: $burger-color-open;
+				}
 
-        &:nth-child(2) {
-          opacity: 0;
-          left: -60px;
-        }
+				&:nth-child(2) {
+					opacity: 0;
+					left: -60px;
+				}
 
-        &:nth-child(3) {
-          top: 0.9rem;
-          transform: rotate(-135deg);
-          background-color: $burger-color-open;
-        }
-      }
-    }
-  }
+				&:nth-child(3) {
+					top: 0.9rem;
+					transform: rotate(-135deg);
+					background-color: $burger-color-open;
+				}
+			}
+		}
+	}
 
-  &__menu {
-    display: block;
-    &.open {
-      display: block;
-    }
-  }
+	&__menu {
+		display: block;
+		&.open {
+			display: block;
+		}
+	}
 
-  &__list {
-    gap: 30px;
-    font-family: Inter;
-    font-size: 20px;
-    font-weight: 400;
-    color: #fff;
-  }
+	&__list {
+		gap: 30px;
+		font-family: Inter;
+		font-size: 20px;
+		font-weight: 400;
+		color: #fff;
+	}
 
-  @media (max-width: $media-breakpoint) {
-    &__burger {
-      display: block;
-    }
-    &__menu {
-      display: none;
-    }
-    &__list {
-      position: absolute;
-      top: 11%;
-      right: 0;
-      flex-direction: column;
-      align-items: start;
-      background-color: rgba(12, 12, 14, 0.9);
-      padding: 2rem 3rem;
-      z-index: 3;
-      font-size: 1.8rem;
-    }
-  }
+	@media (max-width: $media-breakpoint) {
+		&__burger {
+			display: block;
+		}
+		&__menu {
+			display: none;
+		}
+		&__list {
+			position: absolute;
+			top: 6%;
+			right: 0;
+			flex-direction: column;
+			align-items: start;
+			background-color: rgba(12, 12, 14, 0.9);
+			padding: 2rem 3rem;
+			z-index: 3;
+			font-size: 1.8rem;
+		}
+	}
 }

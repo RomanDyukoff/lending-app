@@ -1,10 +1,9 @@
-import { PageLayout } from "@/layout/layout";
+import { PageLayout } from '@/layout/layout';
 
-
-export default function NotFoundPage() {
-    return (
-        <PageLayout title="Ошибка | Такой страницы не существует">
-            <div>Упс...</div>
-        </PageLayout>
-    );
+export default function NotFoundPage(): JSX.Element {
+	return (
+		<PageLayout title="Ошибка | Такой страницы не существует">
+			<div>Упс...</div>
+		</PageLayout>
+	);
 }

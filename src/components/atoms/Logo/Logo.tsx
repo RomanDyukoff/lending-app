@@ -5,10 +5,10 @@ interface LogoProps {
 	classNames?: string;
 }
 
-export const Logo = ({ classNames }: LogoProps) => {
+export const Logo = ({ classNames = '' }: LogoProps): JSX.Element => {
 	return (
 		<Title classNames={classNames}>
-			<Link href='/'>Название фирмы</Link>
+			<Link href="/">Название фирмы</Link>
 		</Title>
-	)
-}
+	);
+};

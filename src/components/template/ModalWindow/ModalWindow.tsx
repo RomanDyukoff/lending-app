@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Modal from 'react-modal';
 
 import styles from './style.module.scss';
@@ -13,17 +13,20 @@ const customStyles = {
 	overlay: {
 		backgroundColor: 'rgba(0, 0, 0, 0.75)',
 		zIndex: '10',
-		display: "flex",
+		display: 'flex',
 		justifyContent: 'center',
-		alignItems: "center",
+		alignItems: 'center',
 	},
 };
 
-export const ModalWindow = ({ children, isOpen, handelClose }: ModalWindowProps) => {
-
-	const closeModal = () => {
+export const ModalWindow = ({
+	children = <div></div>,
+	isOpen,
+	handelClose,
+}: ModalWindowProps): JSX.Element => {
+	const closeModal = (): void => {
 		handelClose(false);
-	}
+	};
 
 	return (
 		<Modal
@@ -35,7 +38,9 @@ export const ModalWindow = ({ children, isOpen, handelClose }: ModalWindowProps)
 			ariaHideApp={false}
 		>
 			{children}
-			<button className={styles.close} onClick={closeModal}>&#215;</button>
+			<button className={styles.close} onClick={closeModal}>
+				&#215;
+			</button>
 		</Modal>
-	)
-}
+	);
+};

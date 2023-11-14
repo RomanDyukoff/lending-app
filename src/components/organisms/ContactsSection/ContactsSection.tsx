@@ -1,15 +1,16 @@
-'use client'
+'use client';
 import { Title } from '@/components/atoms/Title/Title';
 import { Container } from '../../atoms/Container/Container';
 import styles from './style.module.scss';
 import { YMaps, Map } from '@pbe/react-yandex-maps';
 
-
-export const ContactsSection = () => {
+export const ContactsSection = (): JSX.Element => {
 	return (
-		<section className={`${styles.contacts} section-container`} id='contacts'>
+		<section className={`${styles.contacts} section-container`} id="contacts">
 			<Container>
-				<Title levet='h2' classNames='section-title title'>Контакты</Title>
+				<Title levet="h2" classNames="section-title title">
+					Контакты
+				</Title>
 				<div className={styles.contacts__content}>
 					<div className={styles.info}>
 						<h5 className={styles.info__title}>По всем вопросам обращайтесь:</h5>
@@ -22,11 +23,15 @@ export const ContactsSection = () => {
 					</div>
 					<div className={styles.contacts__map}>
 						<YMaps>
-							<Map width='100%' height='400px' defaultState={{ center: [55.184218, 30.202877], zoom: 9 }} />
+							<Map
+								width="100%"
+								height="400px"
+								defaultState={{ center: [55.184218, 30.202877], zoom: 9 }}
+							/>
 						</YMaps>
 					</div>
 				</div>
 			</Container>
 		</section>
-	)
-}
+	);
+};

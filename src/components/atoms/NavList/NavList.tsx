@@ -5,14 +5,12 @@ interface NavListProps {
 	navItems: NavItemProps[];
 }
 
-export const NavList = ({ classNames, navItems }: NavListProps) => {
+export const NavList = ({ classNames = '', navItems }: NavListProps): JSX.Element => {
 	return (
 		<ul className={classNames}>
-			{
-				navItems.map((item, i) => (
-					<NavItem key={i} label={item.label} href={item.href} />
-				))
-			}
+			{navItems.map((item, i) => (
+				<NavItem key={i} label={item.label} href={item.href} />
+			))}
 		</ul>
-	)
-}
+	);
+};

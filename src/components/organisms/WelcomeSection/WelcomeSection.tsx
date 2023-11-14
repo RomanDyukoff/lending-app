@@ -1,16 +1,14 @@
 import styles from './style.module.scss';
 
-export const WelcomeSection = () => {
+export const WelcomeSection = (): JSX.Element => {
 	return (
-		<section className={styles.welcome} id='welcome'>
+		<section className={styles.welcome} id="welcome">
 			<div className={styles.welcome__bg}></div>
-			<div className='container'>
+			<div className="container">
 				<div className={styles.welcome__content}>
-					<p className={styles.welcome__text}>
-						Здесь краткое описание нашей фирмы
-					</p>
+					<p className={styles.welcome__text}>Здесь краткое описание нашей фирмы</p>
 				</div>
 			</div>
 		</section>
-	)
-}
+	);
+};

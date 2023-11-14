@@ -1,9 +1,7 @@
 'use client';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { register } from 'swiper/element/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import kek from '../../../public/img/hasbik.jpg'
 
 // import styles from './style.module.scss';
 import './style.scss';
@@ -12,66 +10,56 @@ register();
 
 import 'swiper/scss';
 import 'swiper/scss/effect-coverflow';
-import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 
-import { EffectCoverflow, Navigation, Virtual } from 'swiper/modules';
-import { useState } from 'react';
+import { Virtual, Pagination } from 'swiper/modules';
+import { useCallback, useMemo, useState } from 'react';
 import { slides } from '@/constants/constants';
-import { ModalWindow } from '../ModalWindow/ModalWindow';
+import { ModalWindow } from '../../template/ModalWindow/ModalWindow';
+import { useWindowWidth } from '@/hooks/useWindowWidth';
 
-
-export const Carousel = () => {
+export const Carousel = (): JSX.Element => {
 	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+	const [selectedImage, setSelectedImage] = useState<StaticImageData | null>(null);
+	const widthWindow: number = useWindowWidth();
 
-	const openModal = () => {
+	const getSlide = useCallback((slide: StaticImageData): void => {
+		setSelectedImage(slide);
 		setModalIsOpen(true);
-	}
+	}, []);
+
+	const perViev = useMemo(() => {
+		if (widthWindow <= 576) return 1;
+		if (widthWindow <= 992) return 2;
+		return 3;
+	}, [widthWindow]);
 
 	return (
 		<>
 			<Swiper
-				effect={'coverflow'}
+				slidesPerView={perViev}
+				centeredSlides={widthWindow < 500 ? true : false}
+				spaceBetween={40}
 				grabCursor={true}
-				centeredSlides={true}
 				loop={true}
-				slidesPerView={'auto'}
-				coverflowEffect={{
-					rotate: 0,
-					stretch: 0,
-					depth: 100,
-					modifier: 2.5,
-				}}
-				navigation={{
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				}}
-				modules={[EffectCoverflow, Navigation, Virtual]}
+				pagination={{ el: '.swiper-pagination', clickable: true }}
+				modules={[Pagination, Virtual]}
 				className="swiper_container"
 			>
-
-
-				{
-					slides.map((slide, i) => (
-						<SwiperSlide key={i++} onClick={openModal}>
-							<Image src={slide.src} alt={slide.alt} priority />
-						</SwiperSlide>
-					))
-				}
-
+				{slides.map((slide, i) => (
+					<SwiperSlide key={i++} onClick={() => getSlide(slide.src)}>
+						<Image src={slide.src} alt={slide.alt} priority />
+					</SwiperSlide>
+				))}
 
 				<div className="slider-controler">
-					<div className="swiper-button-prev slider-arrow">
-						-
-					</div>
-					<div className="swiper-button-next slider-arrow">
-						+
-					</div>
+					<div className="swiper-pagination"></div>
 				</div>
 			</Swiper>
 
 			<ModalWindow isOpen={modalIsOpen} handelClose={setModalIsOpen}>
-				<Image src={kek} alt="slide_image" />
+				{selectedImage && <Image src={selectedImage} alt="slide_image" />}
 			</ModalWindow>
 		</>
 	);
-}
+};

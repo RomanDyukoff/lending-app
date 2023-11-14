@@ -1,24 +1,24 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  line-height: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: 'Inter', sans-serif;
+	font-style: normal;
+	line-height: 50px;
 }
 
 body::-webkit-scrollbar {
-  width: 0;
+	width: 0;
 }
 
 $light-text-color: #ffff;
@@ -28,80 +28,80 @@ $hover-gold-color: #bb945f;
 $hover-grey-color: #8e8e8e;
 
 .button {
-  padding: 10px;
-  min-width: 75px;
-  text-align: center;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1px;
-  color: $body-bg-color;
-  background-color: $light-text-color;
-  border-radius: 2px;
-  border: 1px solid $body-bg-color;
-  cursor: pointer;
-  transition: 0.4s;
+	padding: 10px;
+	min-width: 75px;
+	text-align: center;
+	font-size: 10px;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+	color: $body-bg-color;
+	background-color: $light-text-color;
+	border-radius: 2px;
+	border: 1px solid $body-bg-color;
+	cursor: pointer;
+	transition: 0.4s;
 }
 
 .button:hover {
-  border: 1px solid $hover-gold-color;
-  background: $hover-gold-color;
+	border: 1px solid $hover-gold-color;
+	background: $hover-gold-color;
 }
 
 .title {
-  margin: 0;
-  font-family: Forum;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 40px;
-  letter-spacing: 2px;
-  color: $body-bg-color;
-  text-transform: capitalize;
+	margin: 0;
+	font-family: Forum;
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 40px;
+	letter-spacing: 2px;
+	color: $body-bg-color;
+	text-transform: capitalize;
 }
 
 .section-title {
-  position: relative;
-  margin: 0 0 40px 0;
-  height: 61px;
-  text-align: center;
+	position: relative;
+	margin: 0 0 40px 0;
+	height: 61px;
+	text-align: center;
 }
 
 .section-title::after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  content: "";
-  width: 50px;
-  height: 1px;
-  background-color: $body-bg-color;
-  transform: translateX(-50%);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	content: '';
+	width: 50px;
+	height: 1px;
+	background-color: $body-bg-color;
+	transform: translateX(-50%);
 }
 
 .section-container {
-  margin: 20px 0 40px 0;
+	margin: 20px 0 40px 0;
 }
 
 .section-text {
-  margin: 0;
-  text-align: center;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 40px;
-  color: $dark-text-color;
+	margin: 0;
+	text-align: center;
+	font-family: Inter;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 40px;
+	color: $dark-text-color;
 }
 
 ul {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+	display: flex;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }

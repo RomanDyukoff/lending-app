@@ -4,13 +4,13 @@ import { WelcomeSection } from '@/components/organisms/WelcomeSection/WelcomeSec
 import { WorkSection } from '@/components/organisms/WorkSection/WorkSection';
 import '@/styles/globals.scss';
 
-export default function Home() {
-  return (
-    <>
-      <WelcomeSection />
-      <AboutSection />
-      <WorkSection />
-      <ContactsSection />
-    </>
-  )
+export default function Home(): JSX.Element {
+	return (
+		<>
+			<WelcomeSection />
+			<AboutSection />
+			<WorkSection />
+			<ContactsSection />
+		</>
+	);
 }

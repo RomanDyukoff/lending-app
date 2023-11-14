@@ -10,15 +10,19 @@ interface NavigationProps {
 	navItems: NavItemProps[];
 }
 
-export const Navigation = ({ classNames, navItems, children }: NavigationProps) => {
+export const Navigation = ({
+	classNames = '',
+	navItems,
+	children = null,
+}: NavigationProps): JSX.Element => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	const toggleButton = useCallback(() => {
-		setIsOpen(prevState => !prevState);
+		setIsOpen((prevState) => !prevState);
 	}, []);
 
 	useEffect(() => {
-		const handleKeyDown = (event: KeyboardEvent) => {
+		const handleKeyDown = (event: KeyboardEvent): void => {
 			if (event.key === 'Escape') {
 				setIsOpen(false);
 			}
@@ -49,5 +53,5 @@ export const Navigation = ({ classNames, navItems, children }: NavigationProps) 
 				<NavList classNames={styles.navigation__list} navItems={navItems} />
 			</div>
 		</nav>
-	)
-}
+	);
+};
