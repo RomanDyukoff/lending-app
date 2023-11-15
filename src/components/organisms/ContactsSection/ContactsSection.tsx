@@ -1,12 +1,14 @@
-"use client";
+'use client';
 
-import { Map, YMaps } from "@pbe/react-yandex-maps";
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { Title } from "@/components/atoms/Title/Title";
+import { Map, YMaps } from '@pbe/react-yandex-maps';
 
-import { Container } from "../../atoms/Container/Container";
+import { Title } from '@/components/atoms/Title/Title';
 
-import styles from "./style.module.scss";
+import { Container } from '../../atoms/Container/Container';
+
+import styles from './style.module.scss';
 
 export const ContactsSection = (): JSX.Element => {
     return (

@@ -1,8 +1,8 @@
-import { Title } from "@/components/atoms/Title/Title";
+import { Title } from '@/components/atoms/Title/Title';
 
-import { Container } from "../../atoms/Container/Container";
+import { Container } from '../../atoms/Container/Container';
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
 export const AboutSection = (): JSX.Element => {
     return (

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Modal from "react-modal";
+import Modal from 'react-modal';
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
 interface ModalWindowProps {
     children?: React.ReactNode;
@@ -12,11 +12,11 @@ interface ModalWindowProps {
 
 const customStyles = {
     overlay: {
-        backgroundColor: "rgba(0, 0, 0, 0.75)",
-        zIndex: "10",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        zIndex: '10',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 };
 
@@ -35,7 +35,7 @@ export const ModalWindow = ({ children = <div />, isOpen, handelClose }: ModalWi
             ariaHideApp={false}
         >
             {children}
-            <button className={styles.close} onClick={closeModal}>
+            <button className={styles.close} onClick={closeModal} type="button">
                 &#215;
             </button>
         </Modal>

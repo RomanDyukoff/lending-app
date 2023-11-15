@@ -1,11 +1,12 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useState } from "react";
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useCallback, useEffect, useState } from 'react';
 
-import type { NavItemProps } from "../../atoms/NavItem/NavItem";
-import { NavList } from "../../atoms/NavList/NavList";
+import type { NavItemProps } from '../../atoms/NavItem/NavItem';
+import { NavList } from '../../atoms/NavList/NavList';
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
 interface NavigationProps {
     classNames?: string;
@@ -13,7 +14,7 @@ interface NavigationProps {
     navItems: NavItemProps[];
 }
 
-export const Navigation = ({ classNames = "", navItems, children = null }: NavigationProps): JSX.Element => {
+export const Navigation = ({ classNames = '', navItems, children = null }: NavigationProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggleButton = useCallback(() => {
@@ -22,15 +23,15 @@ export const Navigation = ({ classNames = "", navItems, children = null }: Navig
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent): void => {
-            if (event.key === "Escape") {
+            if (event.key === 'Escape') {
                 setIsOpen(false);
             }
         };
 
-        document.addEventListener("keydown", handleKeyDown);
+        document.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
 
@@ -38,14 +39,15 @@ export const Navigation = ({ classNames = "", navItems, children = null }: Navig
         <nav className={`${classNames} ${styles.navigation}`}>
             <button
                 onClick={toggleButton}
-                className={`${styles.navigation__burger} ${isOpen ? `${styles.open}` : ""}`}
+                className={`${styles.navigation__burger} ${isOpen ? `${styles.open}` : ''}`}
                 aria-expanded={isOpen}
+                type="button"
             >
                 <div />
                 <div />
                 <div />
             </button>
-            <div className={`${styles.navigation__menu} ${isOpen ? `${styles.open}` : ""}`} aria-hidden={!isOpen}>
+            <div className={`${styles.navigation__menu} ${isOpen ? `${styles.open}` : ''}`} aria-hidden={!isOpen}>
                 {children}
                 <NavList classNames={styles.navigation__list} navItems={navItems} />
             </div>

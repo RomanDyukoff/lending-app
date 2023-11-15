@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useCallback, useMemo, useState } from "react";
-import type { StaticImageData } from "next/image";
-import Image from "next/image";
-import { register } from "swiper/element/bundle";
-import { Pagination, Virtual } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useCallback, useMemo, useState } from 'react';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
+import { register } from 'swiper/element/bundle';
+import { Pagination, Virtual } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { slides } from "@/constants/constants";
-import { useResize } from "@/hooks/useResize";
+import { slides } from '@/constants/constants';
+import { useResize } from '@/hooks/useResize';
 
-import "swiper/scss";
-import "swiper/scss/effect-coverflow";
-import "swiper/scss/pagination";
+import 'swiper/scss';
+import 'swiper/scss/effect-coverflow';
+import 'swiper/scss/pagination';
 
-import { ModalWindow } from "../../template/ModalWindow/ModalWindow";
+import { ModalWindow } from '../../template/ModalWindow/ModalWindow';
 
 // import styles from './style.module.scss';
-import "./style.scss";
+import './style.scss';
 
 register();
 
@@ -49,7 +49,7 @@ export const Carousel = (): JSX.Element => {
                 spaceBetween={40}
                 grabCursor
                 loop
-                pagination={{ el: ".swiper-pagination", clickable: true }}
+                pagination={{ el: '.swiper-pagination', clickable: true }}
                 modules={[Pagination, Virtual]}
                 className="swiper_container"
             >
