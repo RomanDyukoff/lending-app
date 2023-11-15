@@ -1,16 +1,16 @@
-import styles from './style.module.scss';
+import styles from "./style.module.scss";
 
 export interface NavItemProps {
-	href: string;
-	label: string;
+    href: string;
+    label: string;
 }
 
 export const NavItem = ({ href, label }: NavItemProps): JSX.Element => {
-	return (
-		<li className={styles.item}>
-			<a className={styles.item__link} href={href}>
-				{label}
-			</a>
-		</li>
-	);
+    return (
+        <li className={styles.item}>
+            <a className={styles.item__link} href={href}>
+                {label}
+            </a>
+        </li>
+    );
 };

@@ -1,65 +1,72 @@
-'use client';
-import Image, { StaticImageData } from 'next/image';
-import { register } from 'swiper/element/bundle';
-import { Swiper, SwiperSlide } from 'swiper/react';
+"use client";
+
+import { useCallback, useMemo, useState } from "react";
+import type { StaticImageData } from "next/image";
+import Image from "next/image";
+import { register } from "swiper/element/bundle";
+import { Pagination, Virtual } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { slides } from "@/constants/constants";
+import { useResize } from "@/hooks/useResize";
+
+import "swiper/scss";
+import "swiper/scss/effect-coverflow";
+import "swiper/scss/pagination";
+
+import { ModalWindow } from "../../template/ModalWindow/ModalWindow";
 
 // import styles from './style.module.scss';
-import './style.scss';
+import "./style.scss";
 
 register();
 
-import 'swiper/scss';
-import 'swiper/scss/effect-coverflow';
-import 'swiper/scss/pagination';
-
-import { Virtual, Pagination } from 'swiper/modules';
-import { useCallback, useMemo, useState } from 'react';
-import { slides } from '@/constants/constants';
-import { ModalWindow } from '../../template/ModalWindow/ModalWindow';
-import { useWindowWidth } from '@/hooks/useWindowWidth';
-
 export const Carousel = (): JSX.Element => {
-	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-	const [selectedImage, setSelectedImage] = useState<StaticImageData | null>(null);
-	const widthWindow: number = useWindowWidth();
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+    const [selectedImage, setSelectedImage] = useState<StaticImageData | null>(null);
+    const windowSize = useResize();
 
-	const getSlide = useCallback((slide: StaticImageData): void => {
-		setSelectedImage(slide);
-		setModalIsOpen(true);
-	}, []);
+    const getSlide = useCallback((slide: StaticImageData): void => {
+        setSelectedImage(slide);
+        setModalIsOpen(true);
+    }, []);
 
-	const perViev = useMemo(() => {
-		if (widthWindow <= 576) return 1;
-		if (widthWindow <= 992) return 2;
-		return 3;
-	}, [widthWindow]);
+    const perViev = useMemo(() => {
+        if (windowSize) {
+            if (window.innerWidth <= 576) return 1;
 
-	return (
-		<>
-			<Swiper
-				slidesPerView={perViev}
-				centeredSlides={widthWindow < 500 ? true : false}
-				spaceBetween={40}
-				grabCursor={true}
-				loop={true}
-				pagination={{ el: '.swiper-pagination', clickable: true }}
-				modules={[Pagination, Virtual]}
-				className="swiper_container"
-			>
-				{slides.map((slide, i) => (
-					<SwiperSlide key={i++} onClick={() => getSlide(slide.src)}>
-						<Image src={slide.src} alt={slide.alt} priority />
-					</SwiperSlide>
-				))}
+            if (window.innerWidth <= 992) return 2;
+        }
 
-				<div className="slider-controler">
-					<div className="swiper-pagination"></div>
-				</div>
-			</Swiper>
+        return 3;
+    }, [windowSize]);
 
-			<ModalWindow isOpen={modalIsOpen} handelClose={setModalIsOpen}>
-				{selectedImage && <Image src={selectedImage} alt="slide_image" />}
-			</ModalWindow>
-		</>
-	);
+    return (
+        <>
+            <Swiper
+                slidesPerView={perViev}
+                centeredSlides={windowSize === 768}
+                spaceBetween={40}
+                grabCursor
+                loop
+                pagination={{ el: ".swiper-pagination", clickable: true }}
+                modules={[Pagination, Virtual]}
+                className="swiper_container"
+            >
+                {slides.map((slide, i) => (
+                    <SwiperSlide key={i++} onClick={() => getSlide(slide.src)}>
+                        <Image src={slide.src} alt={slide.alt} priority />
+                    </SwiperSlide>
+                ))}
+
+                <div className="slider-controler">
+                    <div className="swiper-pagination" />
+                </div>
+            </Swiper>
+
+            <ModalWindow isOpen={modalIsOpen} handelClose={setModalIsOpen}>
+                {selectedImage && <Image src={selectedImage} alt="slide_image" />}
+            </ModalWindow>
+        </>
+    );
 };
