@@ -19,7 +19,9 @@ export const ContactsSection = (): JSX.Element => {
                 </Title>
                 <div className={styles.contacts__content}>
                     <div className={styles.info}>
-                        <h5 className={styles.info__title}>По всем вопросам обращайтесь:</h5>
+                        <Title levet="h5" classNames={styles.info__title}>
+                            По всем вопросам обращайтесь:
+                        </Title>
                         <address className={styles.info__address}>
                             <a href="#">Для получения информации: (617) 730-2370</a>
                             <a href="#">Сделать замеры (617) 730-2370</a>

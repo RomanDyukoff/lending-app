@@ -45,7 +45,6 @@ export const Carousel = (): JSX.Element => {
         <>
             <Swiper
                 slidesPerView={perViev}
-                centeredSlides={windowSize === 768}
                 spaceBetween={40}
                 grabCursor
                 loop
