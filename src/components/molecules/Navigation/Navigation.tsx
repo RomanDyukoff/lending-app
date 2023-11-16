@@ -14,7 +14,11 @@ interface NavigationProps {
     navItems: NavItemProps[];
 }
 
-export const Navigation = ({ classNames = '', navItems, children = null }: NavigationProps): JSX.Element => {
+export const Navigation = ({
+    classNames = '',
+    navItems,
+    children = null,
+}: NavigationProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggleButton = useCallback(() => {
@@ -47,7 +51,10 @@ export const Navigation = ({ classNames = '', navItems, children = null }: Navig
                 <div />
                 <div />
             </button>
-            <div className={`${styles.navigation__menu} ${isOpen ? `${styles.open}` : ''}`} aria-hidden={!isOpen}>
+            <div
+                className={`${styles.navigation__menu} ${isOpen ? `${styles.open}` : ''}`}
+                aria-hidden={!isOpen}
+            >
                 {children}
                 <NavList classNames={styles.navigation__list} navItems={navItems} />
             </div>

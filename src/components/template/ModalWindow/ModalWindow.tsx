@@ -20,7 +20,11 @@ const customStyles = {
     },
 };
 
-export const ModalWindow = ({ children = <div />, isOpen, handelClose }: ModalWindowProps): JSX.Element => {
+export const ModalWindow = ({
+    children = <div />,
+    isOpen,
+    handelClose,
+}: ModalWindowProps): JSX.Element => {
     const closeModal = (): void => {
         handelClose(false);
     };

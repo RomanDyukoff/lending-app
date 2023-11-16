@@ -8,7 +8,11 @@ interface TitleProps {
     children?: React.ReactNode;
 }
 
-export const Title = ({ levet = 'h1', classNames = '', children = null }: TitleProps): JSX.Element => {
+export const Title = ({
+    levet = 'h1',
+    classNames = '',
+    children = null,
+}: TitleProps): JSX.Element => {
     const Tag = levet;
 
     return <Tag className={`${classNames} ${styles.title}`}>{children}</Tag>;

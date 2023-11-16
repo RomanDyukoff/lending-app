@@ -1,5 +1,6 @@
 import { AboutSection } from '@/components/organisms/AboutSection/AboutSection';
 import { ContactsSection } from '@/components/organisms/ContactsSection/ContactsSection';
+import { PriceSection } from '@/components/organisms/PriceSection/PriceSection';
 import { WelcomeSection } from '@/components/organisms/WelcomeSection/WelcomeSection';
 import { WorkSection } from '@/components/organisms/WorkSection/WorkSection';
 
@@ -12,6 +13,7 @@ export default function Home(): JSX.Element {
             <AboutSection />
             <WorkSection />
             <ContactsSection />
+            <PriceSection />
         </>
     );
 }
